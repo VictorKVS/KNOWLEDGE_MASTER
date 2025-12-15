@@ -1,0 +1,62 @@
+# =====================================================
+# KNOWLEDGE_MASTER — CODEOWNERS
+# Governance-first / Docs-first / Zero-Trust AI
+# =====================================================
+
+# -----------------------------------------------------
+# Global default owner
+# -----------------------------------------------------
+* @VictorKVS
+
+
+# =====================================================
+# CRITICAL ZONES — HUMAN APPROVAL REQUIRED
+# =====================================================
+
+# Knowledge Standards (LAW of the system)
+KNOWLEDGE_MASTER/01_STANDARDS/        @VictorKVS
+
+# Knowledge Architecture & Governance
+KNOWLEDGE_MASTER/02_TEMPLATES/        @VictorKVS
+KNOWLEDGE_MASTER/03_PLAYBOOKS/        @VictorKVS
+KNOWLEDGE_MASTER/06_OPERATIONS/       @VictorKVS
+
+# Agent roles & training (capabilities control)
+KNOWLEDGE_MASTER/05_AGENT_SCHOOL/     @VictorKVS
+
+# -----------------------------------------------------
+# Knowledge Base protected zones
+# -----------------------------------------------------
+
+# Intake contracts (AI access control)
+knowledge_base/30_intake/             @VictorKVS
+
+# Validation logic
+knowledge_base/35_validation/         @VictorKVS
+
+# Inter-Agent governance
+knowledge_base/90_interagent/         @VictorKVS
+
+# Logs structure (not contents)
+knowledge_base/80_logs/.keep          @VictorKVS
+
+
+# =====================================================
+# TESTS — MUST MATCH STANDARDS
+# =====================================================
+tests/                                @VictorKVS
+
+
+# =====================================================
+# SOURCE CODE — IMPLEMENTATION ONLY
+# =====================================================
+src/                                  @VictorKVS
+
+
+# =====================================================
+# META FILES
+# =====================================================
+README.md                             @VictorKVS
+VERSION                               @VictorKVS
+CHANGELOG.md                          @VictorKVS
+.gitignore                            @VictorKVS

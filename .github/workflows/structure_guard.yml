@@ -1,0 +1,63 @@
+name: Knowledge Master - Structure Guard
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main ]
+
+jobs:
+  structure-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify required directories exist
+        run: |
+          REQUIRED_DIRS=(
+            "KNOWLEDGE_MASTER/00_START_HERE"
+            "KNOWLEDGE_MASTER/01_STANDARDS"
+            "KNOWLEDGE_MASTER/02_TEMPLATES"
+            "KNOWLEDGE_MASTER/03_PLAYBOOKS"
+            "KNOWLEDGE_MASTER/04_TESTS_AND_EVAL"
+            "KNOWLEDGE_MASTER/05_AGENT_SCHOOL"
+            "KNOWLEDGE_MASTER/06_OPERATIONS"
+            "knowledge_base/30_intake"
+            "knowledge_base/35_validation"
+            "knowledge_base/80_logs"
+            "knowledge_base/90_interagent"
+            "tests"
+            "src"
+          )
+
+          for dir in "${REQUIRED_DIRS[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "❌ Missing required directory: $dir"
+              exit 1
+            fi
+          done
+
+          echo "✅ Repository structure is valid"
+
+      - name: Protect KB upper layers from direct writes
+        run: |
+          FORBIDDEN_PATHS=(
+            "knowledge_base/semantic"
+            "knowledge_base/graph"
+            "knowledge_base/governance"
+          )
+
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD || true)
+
+          for file in $CHANGED_FILES; do
+            for forbidden in "${FORBIDDEN_PATHS[@]}"; do
+              if [[ "$file" == "$forbidden"* ]]; then
+                echo "❌ Direct modification forbidden: $file"
+                exit 1
+              fi
+            done
+          done
+
+          echo "✅ KB modification rules respected"

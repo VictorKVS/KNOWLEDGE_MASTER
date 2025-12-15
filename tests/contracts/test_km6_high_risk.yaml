@@ -1,0 +1,14 @@
+# tests/decision_engine/test_km6_high_risk.yaml
+test_id: DT-KM6-HIGH-001
+description: High-risk decision must escalate
+
+given:
+  risk_level: high
+  validation: PASS
+
+when:
+  decision_engine: km6
+
+then:
+  decision: ESCALATE
+  human_required: true

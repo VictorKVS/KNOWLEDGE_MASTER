@@ -1,0 +1,14 @@
+# tests/decision_engine/test_km6_low_risk.yaml
+test_id: DT-KM6-LOW-001
+description: Low-risk decision auto-approved
+
+given:
+  risk_level: low
+  validation: PASS
+
+when:
+  decision_engine: km6
+
+then:
+  decision: APPROVE
+  human_required: false

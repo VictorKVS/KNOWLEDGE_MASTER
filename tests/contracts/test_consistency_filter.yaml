@@ -1,0 +1,14 @@
+# tests/validation/test_consistency_filter.yaml
+test_id: VT-CON-001
+description: Conflict with existing KB fact
+
+given:
+  new_fact: "Retention period is 10 years"
+  existing_fact: "Retention period is 5 years"
+
+when:
+  validation_layer: consistency
+
+then:
+  result: CONFLICT
+  resolution: ESCALATE

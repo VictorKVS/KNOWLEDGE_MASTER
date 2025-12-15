@@ -1,0 +1,13 @@
+test_id: VT-SEM-001
+description: Reject semantic inconsistency
+
+given:
+  content: "Personal data may be stored indefinitely."
+  ontology_reference: PD_POLICY
+
+when:
+  validation_layer: semantic
+
+then:
+  result: FAIL
+  reason: CONFLICT_WITH_ONTOLOGY

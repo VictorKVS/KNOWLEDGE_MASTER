@@ -1,0 +1,16 @@
+# tests/contracts/test_internal_agent_intake.yaml
+
+test_id: CT-INT-AI-001
+description: Internal agent may propose but never write
+
+given:
+  source_type: internal_ai
+  trust_level: medium
+
+when:
+  action: write_knowledge
+  target_layer: semantic
+
+then:
+  allowed: false
+  reason: DIRECT_WRITE_FORBIDDEN

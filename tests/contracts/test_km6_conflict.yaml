@@ -1,0 +1,15 @@
+# tests/decision_engine/test_km6_conflict.yaml
+test_id: DT-KM6-CONF-001
+description: Conflicting standards trigger rejection
+
+given:
+  validation:
+    semantic: PASS
+    consistency: CONFLICT
+
+when:
+  decision_engine: km6
+
+then:
+  decision: REJECT
+  reason: UNRESOLVED_CONFLICT

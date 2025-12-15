@@ -1,0 +1,20 @@
+# tests/contracts/test_external_ai_intake.yaml
+
+test_id: CT-EXT-AI-001
+description: External AI cannot write directly to KB
+
+given:
+  source_type: external_ai
+  trust_level: low
+  contract_present: true
+
+when:
+  action: propose_knowledge
+  target_layer: raw
+
+then:
+  allowed: true
+  write_directly: false
+  requires_validation: true
+  requires_approval: true
+  decision: ALLOW_PROPOSE_ONLY

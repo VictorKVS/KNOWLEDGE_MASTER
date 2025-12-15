@@ -1,0 +1,172 @@
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Python / AI
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+
+# =========================
+# Models / Large Artifacts
+# =========================
+*.gguf
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+models/
+checkpoints/
+
+# =========================
+# Logs / Runtime
+# =========================
+logs/
+*.log
+
+# =========================
+# Local data (never push)
+# =========================
+data/
+tmp/
+.cache/
+
+# =========================
+# Security / Secrets
+# =========================
+*.key
+*.pem
+*.crt
+secrets/
+credentials/
+.env.*
+
+# =========================
+# Knowledge runtime artifacts
+# =========================
+knowledge_base/80_logs/*
+!knowledge_base/80_logs/.keep
+
+# =========================
+# Tests runtime output
+# =========================
+test_results/
+coverage/
+
+# =========================
+# OS-specific
+# =========================
+$RECYCLE.BIN/
+# =====================================================
+# OS / Editor
+# =====================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =====================================================
+# Python / Virtual Envs
+# =====================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.env
+.env.*
+.venv/
+venv/
+
+# =====================================================
+# LLaMA / LLM MODELS (CRITICAL — NEVER PUSH)
+# =====================================================
+# llama.cpp / gguf models
+*.gguf
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+
+# common model dirs
+models/
+model/
+llm_models/
+llama_models/
+checkpoints/
+
+# llama.cpp runtime
+llama.cpp/
+llama-server/
+llama-server.exe
+llama-cli.exe
+
+# HuggingFace cache
+.cache/huggingface/
+.cache/torch/
+.cache/llama/
+hf_cache/
+
+# =====================================================
+# AI / ML Runtime Artifacts
+# =====================================================
+logs/
+*.log
+runs/
+outputs/
+artifacts/
+
+# =====================================================
+# Knowledge Runtime (LOGS ONLY, NOT STRUCTURE)
+# =====================================================
+knowledge_base/80_logs/*
+!knowledge_base/80_logs/.keep
+
+# =====================================================
+# Test / CI Artifacts
+# =====================================================
+test_results/
+coverage/
+.pytest_cache/
+
+# =====================================================
+# Local Data (never versioned)
+# =====================================================
+data/
+tmp/
+cache/
+
+# =====================================================
+# Security / Secrets
+# =====================================================
+*.key
+*.pem
+*.crt
+*.pfx
+
+secrets/
+credentials/
+tokens/
+
+# =====================================================
+# OS Specific
+# =====================================================
+$RECYCLE.BIN/

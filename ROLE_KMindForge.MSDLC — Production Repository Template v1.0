@@ -1,0 +1,194 @@
+ ROLE_KMindForge.MSDLC — Production Repository Template v1.0
+
+Ниже — дерево проекта со всеми обязательными файлами-шаблонами (пустыми или с заголовком).
+
+📁 1. Корень репозитория
+MindForge.MSDLC/
+├── README.md
+├── VERSION
+├── CHANGELOG.md
+├── LICENSE
+├── project_manifest.yaml
+
+📁 2. Спецификации (REQ → ARCH → PROMPT → TEST → SEC → REL)
+specs/
+ ├── requirements/
+ │    └── REQ_MindForge_MSDLC.yaml
+ │
+ ├── design/
+ │    ├── ARCH_MindForge_MSDLC.yaml
+ │    ├── ARCH_KnowledgeBase.yaml
+ │    ├── ARCH_InterAgent.yaml
+ │    ├── ARCH_Security.yaml
+ │    ├── ARCH_AgentSystem.yaml
+ │    └── ARCH_DataPlatform.yaml
+ │
+ ├── prompts/
+ │    ├── PROMPT_KM6.md
+ │    ├── PROMPT_SecurityAgent.md
+ │    ├── PROMPT_AnalyticsAgent.md
+ │    ├── PROMPT_ArchitectAgent.md
+ │    ├── PROMPT_ResourcePlanner.md
+ │    └── PROMPT_AutoDoc.md
+ │
+ └── tests/
+      ├── TEST_security.json
+      ├── TEST_compliance.json
+      ├── TEST_performance.json
+      └── TEST_agents.json
+
+📁 3. Ролевой слой (Role Universe)
+gov/
+ ├── ROLE_UNIVERSE.yaml
+ ├── ROLE_GOVERNOR.md
+ ├── ROLE_KNOWLEDGE_MASTER.md
+ ├── ROLE_KNOWLEDGE_CURATOR.md
+ ├── ROLE_SECURITY_AGENT.md
+ ├── ROLE_ANALYTICS_AGENT.md
+ ├── ROLE_ARCHITECT_AGENT.md
+ ├── ROLE_RESOURCE_PLANNER.md
+ │
+ ├── role_governance_rules.yaml
+ ├── role_capabilities_map.yaml
+ ├── role_security_matrix.yaml
+ └── role_workflows.bpmn
+
+📁 4. Knowledge Base (ядро MindForge / META-FOUNDRY)
+knowledge_base/
+ ├── 00_core/
+ │    ├── MANIFEST.yaml
+ │    ├── ONTOLOGY.yaml
+ │    ├── TYPES.yaml
+ │    ├── INDEX.csv
+ │    ├── VERSIONS.json
+ │    ├── SECURITY_POLICY.md
+ │    ├── km6_safety_contract.yaml
+ │    └── km6_decision_engine.schema.json
+ │
+ ├── 40_processes/
+ │    ├── msdlc_map.bpmn
+ │    ├── agent_workflow.bpmn
+ │    └── compliance_flow.bpmn
+ │
+ ├── 60_prompts/
+ │    └── (пустые шаблоны для автогенерации через AutoDoc)
+ │
+ ├── 70_factories/
+ │    ├── generator_blueprint_agent.yaml
+ │    ├── generator_blueprint_module.yaml
+ │    └── generator_blueprint_pipeline.yaml
+ │
+ ├── 80_logs/
+ │    ├── KM6_ACTION_LOG.csv
+ │    ├── KM6_DECISION_TRACES/
+ │    ├── KM6_RISK_SIMULATIONS/
+ │    ├── KM6_CHANGE_REQUESTS/
+ │    ├── KM6_AB_TEST_RESULTS/
+ │    └── KB_EVENTS.log
+ │
+ └── 90_interagent/
+      ├── PROTOCOL_IACC.yaml
+      ├── AGENT_PROFILES.yaml
+      ├── km6_decision.schema.json
+      ├── Inter-Agent_Governance_Architecture.md
+      ├── DECISION_LOGS/
+      ├── RESOURCE_PLANNING/
+      ├── INTERAGENT_EVENTS/
+      ├── RISK_SIMULATIONS/
+      └── TEMP_EXCHANGE/
+
+📁 5. Исходный код (Core + Agents + Pipelines)
+src/
+ ├── core/
+ │    ├── __init__.py
+ │    ├── security.py
+ │    ├── compliance_checker.py
+ │    ├── interagent_bus.py
+ │    ├── logging_engine.py
+ │    └── utils.py
+ │
+ ├── agents/
+ │    ├── km6_agent/
+ │    │     ├── __init__.py
+ │    │     └── km6_agent.py
+ │    │
+ │    ├── security_agent/
+ │    │     ├── __init__.py
+ │    │     └── security_agent.py
+ │    │
+ │    ├── analytics_agent/
+ │    │     ├── __init__.py
+ │    │     └── analytics_agent.py
+ │    │
+ │    ├── architect_agent/
+ │    │     ├── __init__.py
+ │    │     └── architect_agent.py
+ │    │
+ │    └── resource_agent/
+ │          ├── __init__.py
+ │          └── resource_agent.py
+ │
+ └── pipelines/
+       ├── __init__.py
+       ├── orchestrator.py
+       └── pipeline_runner.py
+
+📁 6. Security (SAST / DAST / Compliance Guards)
+security/
+ ├── policies/
+ │    ├── global_security_policy.yaml
+ │    ├── security_levels.yaml
+ │    ├── agent_capabilities.yaml
+ │    └── allowed_operations.yaml
+ │
+ ├── compliance/
+ │    ├── fz152_requirements.yaml
+ │    ├── fstek21_mapping.yaml
+ │    ├── owasp_ai_rules.yaml
+ │    └── nist_ai_rmf.yaml
+ │
+ └── sast/
+      ├── bandit_config.yaml
+      ├── semgrep_rules.yaml
+      └── reports/
+
+📁 7. Тесты (unit, integration, security, compliance)
+tests/
+ ├── unit/
+ │    ├── test_km6_agent.py
+ │    ├── test_security_agent.py
+ │    ├── test_analytics_agent.py
+ │    ├── test_architect_agent.py
+ │    └── test_resource_agent.py
+ │
+ ├── integration/
+ │    ├── test_interaction_flow.py
+ │    └── test_pipeline_execution.py
+ │
+ └── security/
+      ├── test_prompt_injection.py
+      ├── test_data_leakage.py
+      ├── test_access_control.py
+      └── test_compliance_validation.py
+
+📁 8. Документация
+docs/
+ ├── ARCHITECTURE.md
+ ├── SECURITY_GUIDE.md
+ ├── COMPLIANCE_REPORT.md
+ ├── API_REFERENCE.md
+ ├── KNOWLEDGE_BASE_GUIDE.md
+ └── QUICK_START.md
+
+📁 9. Инструменты DevSecOps
+tools/
+ ├── mindforge_cli.py
+ ├── block_generator.py
+ ├── spec_validator.py
+ ├── compliance_mapper.py
+ ├── kb_integrity_checker.py
+ └── security_auditor.py
+
+📁 10. Сборка и релизы
+dist/
+ └── (сюда формируются релизы)NOWLEDGE_MASTER.md

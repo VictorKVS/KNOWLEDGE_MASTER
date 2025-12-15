@@ -1,0 +1,30 @@
+#.github/workflows/kb_write_guard.yml
+
+#👉 Запрещает прямые изменения KB (кроме intake зон).
+
+name: Knowledge Base Write Guard
+
+on:
+  pull_request:
+    paths:
+      - "knowledge_base/**"
+
+jobs:
+  kb-guard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enforce KB immutability
+        run: |
+          git fetch origin main
+          git diff --name-only origin/main...HEAD > changes.txt
+
+          if grep -q "^knowledge_base/" changes.txt; then
+            if ! grep -q "^knowledge_base/30_intake/" changes.txt; then
+              echo "❌ Direct KB modification forbidden"
+              exit 1
+            fi
+          fi

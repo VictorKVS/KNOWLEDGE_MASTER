@@ -1,0 +1,35 @@
+#.github/workflows/no_code_without_tests.yml
+
+#👉 Смысл:
+#Нельзя добавлять код, если нет тестов.
+
+name: No Code Without Tests
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+
+jobs:
+  code-test-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed files
+        run: |
+          git fetch origin main
+          git diff --name-only origin/main...HEAD > changes.txt
+          cat changes.txt
+
+      - name: Enforce tests for code
+        run: |
+          if grep -q "^src/" changes.txt; then
+            if ! grep -q "^tests/" changes.txt; then
+              echo "❌ Code added or changed without tests"
+              exit 1
+            fi
+          fi

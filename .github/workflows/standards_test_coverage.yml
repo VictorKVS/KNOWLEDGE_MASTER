@@ -1,0 +1,35 @@
+
+#.github/workflows/standards_test_coverage.yml
+
+👉 Смысл:
+name: Standards Test Coverage Guard
+
+on:
+  pull_request:
+    paths:
+      - "01_STANDARDS/**"
+      - "tests/**"
+
+jobs:
+  standards-tests-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed files
+        id: changes
+        run: |
+          git fetch origin main
+          git diff --name-only origin/main...HEAD > changes.txt
+          cat changes.txt
+
+      - name: Enforce tests for standards
+        run: |
+          if grep -q "^01_STANDARDS/" changes.txt; then
+            if ! grep -q "^tests/" changes.txt; then
+              echo "❌ Standards changed without corresponding tests"
+              exit 1
+            fi
+          fi
